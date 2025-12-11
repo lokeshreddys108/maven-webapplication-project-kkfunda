@@ -42,7 +42,7 @@ pipeline {
                 sh """
                     curl -u kk:password \
                     --upload-file target/maven-web-application.war \
-"http://3.108.194.157:8080/manager/text/deploy?path=/maven-web-application&update=true"
+"http://54.160.224.158:8080//manager/text/deploy?path=/maven-web-application&update=true"
                 """
             }
         }
