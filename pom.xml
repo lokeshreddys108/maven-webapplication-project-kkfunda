@@ -98,13 +98,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Jio-release</name>
-	      <url>http://98.89.32.123:8081/repository/Jio-release/</url>
+	      <url>http://34.203.11.167:8081/repository/Jio-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Jio-snapshot</name>
-	      <url>http://98.89.32.123:8081/repository/jio-snapshot//</url>
+	      <url>http://34.203.11.167:8081/repository/jio-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
