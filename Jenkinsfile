@@ -40,9 +40,8 @@ pipeline {
                 echo "Deploying WAR file to Tomcat..."
 
                 sh """
-                    curl -u kkfunda:kkfunda \
-                    --upload-file target/maven-web-application.war \
-        "http://54.160.224.158:8080/manager/text/deploy?path=/maven-web-application&update=true"
+                    curl -u kk:password -T maven-web-application.war \
+"http://3.108.194.157:8080/manager/text/deploy?path=/maven-web-application&update=true"
                 """
             }
         }
