@@ -40,8 +40,8 @@ pipeline {
                 echo "Deploying WAR file to Tomcat..."
 
                 sh """
-                      curl -u kk:password \
-        --upload-file /var/lib/jenkins/workspace/Declarative-pipeline/target/maven-web-application.war \
+                    curl -u kkfunda:kkfunda \
+                    --upload-file target/maven-web-application.war \
         "http://54.160.224.158:8080/manager/text/deploy?path=/maven-web-application&update=true"
                 """
             }
