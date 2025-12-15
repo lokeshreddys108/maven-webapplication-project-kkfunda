@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout Stage') { 
             steps {
                 // Cloning the code from the GitHub repository
-                git branch: 'fea', url: 'https://github.com/lokeshreddys108/maven-webapplication-project-kkfunda.git'
+                git branch: 'master', url: 'https://github.com/lokeshreddys108/maven-webapplication-project-kkfunda.git'
             }
         }
 
