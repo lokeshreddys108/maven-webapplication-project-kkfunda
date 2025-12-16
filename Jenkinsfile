@@ -6,44 +6,27 @@ pipeline {
     }
 
     stages {
-        stage('Checkout Stage') { 
+        stage 1 :('Checkout Stage') { 
             steps {
                 // Cloning the code from the GitHub repository
                 git branch: 'fea', url: 'https://github.com/lokeshreddys108/maven-webapplication-project-kkfunda.git'
             }
         }
 
-        stage('Build') { 
+        // Stage 2: Maven Build, Sonar scan, and Nexus deploy (Run in parallel)
+        stage('Maven, Sonar, and Nexus') {
             steps {
-                // Building the project with Maven
-                sh 'mvn clean package'
-            }
-        }
-
-        stage('SQReport') {
-            steps {
-                // Running the SonarQube analysis
-                sh 'mvn sonar:sonar'
-            }
-        }
-
-        stage('DeployToNexus') {
-            steps {
-                // Deploying the project to Nexus
-                sh 'mvn deploy'
-            }
-        }
-
-        stage('DeployAppToTomcat') {
-            steps {
-                // Deploying the WAR file to Tomcat
-                echo "Deploying WAR file to Tomcat..."
-
-                sh """
-                    curl -u kk:password \
-                    --upload-file target/maven-web-application.war \
-"http://54.160.224.158:8080//manager/text/deploy?path=/maven-web-application&update=true"
-                """
+                parallel (
+                    "Build": {
+                        sh "mvn clean package"  // Run Maven build
+                    },
+                    "Sonar": {
+                        sh "mvn sonar:sonar"  // Run Sonar scan
+                    },
+                    "Nexus": {
+                        sh "mvn deploy"  // Deploy to Nexus repository
+                    }
+                )
             }
         }
     }
